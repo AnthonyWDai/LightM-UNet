@@ -2,13 +2,13 @@ from nnunetv2.training.nnUNetTrainer.variants.network_architecture.nnUNetTrainer
     nnUNetTrainerNoDeepSupervision
 from nnunetv2.utilities.plans_handling.plans_handler import ConfigurationManager, PlansManager
 from nnunetv2.training.lr_scheduler.polylr import PolyLRScheduler
-from torch import nn
-import torch
-
 from nnunetv2.training.loss.dice import get_tp_fp_fn_tn
-
 from nnunetv2.nets.LightMUNet import LightMUNet
+
+import torch
+from torch import nn
 from torch.optim import Adam
+
 
 class nnUNetTrainerLightMUNet(nnUNetTrainerNoDeepSupervision):
 
@@ -125,3 +125,24 @@ class nnUNetTrainerLightMUNet(nnUNetTrainerNoDeepSupervision):
     
     def set_deep_supervision_enabled(self, enabled: bool):
         pass
+    
+    
+class nnUNetTrainerLightMUNetLr5e3(nnUNetTrainerLightMUNet):
+    def __init__(self, plans: dict, configuration: str, fold: int, dataset_json: dict, unpack_dataset: bool = True,
+                 device: torch.device = torch.device('cuda')):
+        super().__init__(plans, configuration, fold, dataset_json, unpack_dataset, device)
+        self.initial_lr = 5e-3
+        
+        
+class nnUNetTrainerLightMUNetLr1e3(nnUNetTrainerLightMUNet):
+    def __init__(self, plans: dict, configuration: str, fold: int, dataset_json: dict, unpack_dataset: bool = True,
+                 device: torch.device = torch.device('cuda')):
+        super().__init__(plans, configuration, fold, dataset_json, unpack_dataset, device)
+        self.initial_lr = 1e-3
+        
+
+class nnUNetTrainerLightMUNetLr5e4(nnUNetTrainerLightMUNet):
+    def __init__(self, plans: dict, configuration: str, fold: int, dataset_json: dict, unpack_dataset: bool = True,
+                 device: torch.device = torch.device('cuda')):
+        super().__init__(plans, configuration, fold, dataset_json, unpack_dataset, device)
+        self.initial_lr = 5e-4
