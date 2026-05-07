@@ -127,22 +127,22 @@ class nnUNetTrainerLightMUNet(nnUNetTrainerNoDeepSupervision):
         pass
     
     
-class nnUNetTrainerLightMUNetLr5e3(nnUNetTrainerLightMUNet):
+class nnUNetTrainerLightMUNetLr5e5(nnUNetTrainerLightMUNet):
     def __init__(self, plans: dict, configuration: str, fold: int, dataset_json: dict, unpack_dataset: bool = True,
                  device: torch.device = torch.device('cuda')):
         super().__init__(plans, configuration, fold, dataset_json, unpack_dataset, device)
-        self.initial_lr = 5e-3
+        self.initial_lr = 5e-5
         
         
-class nnUNetTrainerLightMUNetLr1e3(nnUNetTrainerLightMUNet):
+class nnUNetTrainerLightMUNetLr1e5(nnUNetTrainerLightMUNet):
     def __init__(self, plans: dict, configuration: str, fold: int, dataset_json: dict, unpack_dataset: bool = True,
                  device: torch.device = torch.device('cuda')):
         super().__init__(plans, configuration, fold, dataset_json, unpack_dataset, device)
-        self.initial_lr = 1e-3
+        self.initial_lr = 1e-5
         
 
-class nnUNetTrainerLightMUNetLr5e4(nnUNetTrainerLightMUNet):
+class nnUNetTrainerLightMUNetLr5e6(nnUNetTrainerLightMUNet):
     def __init__(self, plans: dict, configuration: str, fold: int, dataset_json: dict, unpack_dataset: bool = True,
                  device: torch.device = torch.device('cuda')):
         super().__init__(plans, configuration, fold, dataset_json, unpack_dataset, device)
-        self.initial_lr = 5e-4
+        self.initial_lr = 5e-6
